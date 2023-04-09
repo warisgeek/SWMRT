@@ -1,4 +1,10 @@
-# Swmrt
+# Swmrt setup local
+1.Install Git </br>
+2.open cmd  </br>
+3.run git clone https://github.com/warisgeek/SWMRT </br>
+4.go insde SWMRT </br>
+5.run npm install </br>
+6.run the ng serve </br>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.2.
 
