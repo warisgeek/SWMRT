@@ -1,0 +1,181 @@
+<mat-card>
+  <mat-card-title>
+    Dashboard Reports
+    <mat-divider></mat-divider>
+  </mat-card-title>
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <div fxFlex="100">
+        <mat-tab-group mat-align-tabs="start center">
+          <mat-tab label="Area Level Report">
+            <div fxLayout="row warp" style="margin-top: 20px;" fxLayoutGap="15px" fxLayoutAlign="start center">
+              <mat-form-field fxFlex="20">
+                <mat-label>Ward Name</mat-label>
+                <input matInput  [(ngModel)]="filter.wardname">
+              </mat-form-field>
+              <mat-form-field fxFlex="20">
+                <mat-label>Ward Number</mat-label>
+                <input matInput  [(ngModel)]="filter.wardnumber">
+              </mat-form-field>
+              <button fxFlex="10" title="Search" mat-raised-button color="primary" (click)="filterReport('area')">
+                <mat-icon>search</mat-icon>
+                Search</button>
+              <button fxFlex="10" title="Clear Filter" mat-raised-button color="warn" (click)="resetFilters('area')">
+                <mat-icon>remove_circle</mat-icon>
+                Reset
+              </button>
+            </div>
+            <div class="example-container mat-elevation-z8">
+              <mat-table  class="mat-elevation-z8" matSortDisableClear  matSort [dataSource]="areaLevelDataSource">
+                <ng-container matColumnDef="area">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Area </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.area}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="wardname">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Ward Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.wardname}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="wardnumber">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Ward Number </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.wardnumber}} </mat-cell>
+                </ng-container>              
+                <ng-container matColumnDef="count">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.count}} </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="areaLeveldisplayedColumns;sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: areaLeveldisplayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+          </mat-tab>
+          <mat-tab label="Ward Level Report">
+            <div fxLayout="row warp" style="margin-top: 20px;" fxLayoutGap="15px" fxLayoutAlign="start center">
+              <mat-form-field fxFlex="20">
+                <mat-label>Constituency Name</mat-label>
+                <input matInput  [(ngModel)]="filter.constituencyname">
+              </mat-form-field>
+              <mat-form-field fxFlex="20">
+                <mat-label>Constituency Number</mat-label>
+                <input matInput  [(ngModel)]="filter.constituencyno">
+              </mat-form-field>
+              <button fxFlex="10" title="Search" mat-raised-button color="primary" (click)="filterReport('ward')">
+                <mat-icon>search</mat-icon>
+                Search</button>
+              <button fxFlex="10" title="Clear Filter" mat-raised-button color="warn" (click)="resetFilters('ward')">
+                <mat-icon>remove_circle</mat-icon>
+                Reset
+              </button>
+            </div>
+            <div class="example-container mat-elevation-z8">
+              <mat-table [dataSource]="wardLevelDataSource" matSortDisableClear matSort class="mat-elevation-z8">
+                <ng-container matColumnDef="wardname">
+                  <mat-header-cell *matHeaderCellDef  mat-sort-header> Ward Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.wardname}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="wardnumber">
+                  <mat-header-cell *matHeaderCellDef  mat-sort-header> Ward Number </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.wardnumber}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="constituencyname">
+                  <mat-header-cell *matHeaderCellDef  mat-sort-header> Constituency Name </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.constituencyname}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="count">
+                  <mat-header-cell *matHeaderCellDef  mat-sort-header>Total </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.count}} </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="wardLeveldisplayedColumns;sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: wardLeveldisplayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+          </mat-tab>
+          <mat-tab label="State Level Report">
+            <div fxLayout="row warp" style="margin-top: 20px;" fxLayoutGap="15px" fxLayoutAlign="start center">
+              <mat-form-field fxFlex="20">
+                <mat-label>State</mat-label>
+                <input matInput  [(ngModel)]="filter.state">
+              </mat-form-field>
+            
+              <button fxFlex="10" title="Search" mat-raised-button color="primary" (click)="filterReport('state')">
+                <mat-icon>search</mat-icon>
+                Search</button>
+              <button fxFlex="10" title="Clear Filter" mat-raised-button color="warn" (click)="resetFilters('state')">
+                <mat-icon>remove_circle</mat-icon>
+                Reset
+              </button>
+            </div>
+            <div class="example-container mat-elevation-z8">
+              <mat-table [dataSource]="stateLevelDataSource" matSortDisableClear matSort class="mat-elevation-z8">
+                <ng-container matColumnDef="state">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="city">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>City</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.city}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="count">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.count}} </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="stateLeveldisplayedColumns;sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: stateLeveldisplayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+          </mat-tab>
+          <mat-tab label="India Level Report">
+            <div class="example-container mat-elevation-z8">
+              <mat-table [dataSource]="countryLevelDataSource" matSortDisableClear class="mat-elevation-z8" matSort>
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="count">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.count}} </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="countryLeveldisplayedColumns;sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: countryLeveldisplayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+          </mat-tab>
+          <mat-tab label="Constituency Level Report"  >
+            <div fxLayout="row warp" style="margin-top: 20px;" fxLayoutGap="15px" fxLayoutAlign="start center">
+              <mat-form-field fxFlex="20">
+                <mat-label>State</mat-label>
+                <input matInput  [(ngModel)]="filter.state">
+              </mat-form-field>
+            
+              <button fxFlex="10" title="Search" mat-raised-button color="primary" (click)="filterReport('constituency')">
+                <mat-icon>search</mat-icon>
+                Search</button>
+              <button fxFlex="10" title="Clear Filter" mat-raised-button color="warn" (click)="resetFilters('constituency')">
+                <mat-icon>remove_circle</mat-icon>
+                Reset
+              </button>
+            </div>
+            <div class="example-container mat-elevation-z8">
+              <mat-table [dataSource]="constituencyLevelDataSource" matSortDisableClear matSort class="mat-elevation-z8">
+                <ng-container matColumnDef="state">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>State</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="constituencyname">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Constituency Name</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.constituencyname}} </mat-cell>
+                </ng-container>
+            
+                <ng-container matColumnDef="count">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.count}} </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="constituencydisplayedColumns;sticky: true"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: constituencydisplayedColumns;"></mat-row>
+              </mat-table>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+
+  </mat-card-content>

@@ -1,0 +1,12 @@
+.example-container {
+  max-height: calc(63vh - 10px);
+  min-height: calc(63vh - 10px);
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+.mat-sort-header-sorted {
+  color: black;
+}

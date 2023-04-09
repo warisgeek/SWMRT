@@ -1,0 +1,176 @@
+<mat-card>
+  <mat-card-title>
+    View Survey
+  </mat-card-title>
+  <mat-card-content>
+    <div fxLayout="row warp" fxLayoutGap="15px" fxLayoutAlign="start center">
+      <mat-form-field fxFlex="13" *ngFor="let filter of filterSelectObj">
+        <mat-label>{{filter.name}}</mat-label>
+        <input matInput *ngIf="filter.columnProp!='customertype'" name="{{filter.columnProp}}" [(ngModel)]="filter.modelValue">
+        <mat-select *ngIf="filter.columnProp=='customertype'" name="{{filter.columnProp}}" [(ngModel)]="filter.modelValue">
+          <mat-option value="home">
+            Home
+          </mat-option>
+          <mat-option value="apartment">
+            Apartment
+          </mat-option>
+          <mat-option value="villa">
+            Villa
+          </mat-option>
+          <mat-option value="layout">
+            Layout
+          </mat-option>
+          <mat-option value="office">
+            Office
+          </mat-option>
+          <mat-option value="resort">
+            Resort
+          </mat-option>
+          <mat-option value="restaurant">
+            Restaurant
+          </mat-option>
+          <mat-option value="pg">
+            PG
+          </mat-option>
+          <mat-option value="commercial complex">
+            Commercial Complex
+          </mat-option>
+          <mat-option value="organization">
+            Organization
+          </mat-option>
+          <mat-option value="institution">
+            Institution
+          </mat-option>
+          <mat-option value="temple">
+            Temple
+          </mat-option>
+          <mat-option value="school">
+            School
+          </mat-option>
+          <mat-option value="office">
+            Office
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button fxFlex="10" title="Search" mat-raised-button color="primary" (click)="searchSurvey()">
+        <mat-icon>search</mat-icon>
+        Search
+      </button>
+      <button fxFlex="10" title="Clear Filter" mat-raised-button color="warn" (click)="resetFilters()">
+        <mat-icon>remove_circle</mat-icon>
+        Reset
+      </button>
+      <button fxFlex="15" title="Export to Excel" mat-raised-button color="primary" (click)="exportToExcel()">
+        <mat-icon>cloud_download</mat-icon>
+        Export to Excel
+      </button>
+    </div>
+    <div class="example-container mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef fxFlex="15" fxFlexAlign="center" mat-sort-header> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="15" fxFlexAlign="center">
+            {{element.name}} </mat-cell>
+        </ng-container>
+
+        <!-- HouseNo Column -->
+        <ng-container matColumnDef="houseno">
+          <mat-header-cell *matHeaderCellDef fxFlex="8" fxFlexAlign="center" mat-sort-header> House No
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="8" fxFlexAlign="center">
+            {{element.houseno}} </mat-cell>
+        </ng-container>
+
+        <!-- Apartment Column -->
+        <ng-container matColumnDef="apartment">
+          <mat-header-cell *matHeaderCellDef fxFlex="8" mat-sort-header> Apartment </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="8">
+            {{element.apartment}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="apartmentcommunitylanehouseholdunit">
+          <mat-header-cell *matHeaderCellDef fxFlex="8" mat-sort-header>Apartment Unit </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="8">
+            {{element.apartmentcommunitylanehouseholdunit}} </mat-cell>
+        </ng-container>
+        <!-- Contactno Column -->
+        <ng-container matColumnDef="street">
+          <mat-header-cell *matHeaderCellDef fxFlex="15" mat-sort-header> Street </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="15">
+            {{element.street}} </mat-cell>
+        </ng-container>
+        <!-- Area Column -->
+        <ng-container matColumnDef="area">
+          <mat-header-cell *matHeaderCellDef fxFlex="8" mat-sort-header> Area </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="8"> {{element.area}} </mat-cell>
+        </ng-container>
+        <!-- wardNumber Column -->
+        <ng-container matColumnDef="wardnumber">
+          <mat-header-cell *matHeaderCellDef fxFlex="10" mat-sort-header> Ward No </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="10"> {{element.wardnumber}} </mat-cell>
+        </ng-container>
+
+        <!-- wardName Column -->
+        <ng-container matColumnDef="wardname">
+          <mat-header-cell *matHeaderCellDef fxFlex="8" mat-sort-header> Ward Name </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="8"> {{element.wardname}} </mat-cell>
+        </ng-container>
+
+        <!-- constituencynumber Column -->
+        <ng-container matColumnDef="constituencynumber">
+          <mat-header-cell *matHeaderCellDef fxFlex="10" mat-sort-header> Constituency No </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="10"> {{element.constituencynumber}} </mat-cell>
+        </ng-container>
+
+        <!-- constituencyname Column -->
+        <ng-container matColumnDef="constituencyname">
+          <mat-header-cell *matHeaderCellDef fxFlex="10" mat-sort-header> Constituency Name </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="10"> {{element.constituencyname}} </mat-cell>
+        </ng-container>
+        <!-- city Column -->
+        <ng-container matColumnDef="city">
+          <mat-header-cell *matHeaderCellDef fxFlex="5" mat-sort-header> City </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="5"> {{element.city}} </mat-cell>
+        </ng-container>
+
+        <!-- pinCode Column -->
+        <ng-container matColumnDef="pinCode">
+          <mat-header-cell *matHeaderCellDef fxFlex="5" mat-sort-header> PinCode </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="5"> {{element.pincode}} </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions" stickyEnd>
+          <mat-header-cell *matHeaderCellDef fxFlex="2"> </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxFlex="2">
+            <mat-menu #appMenu="matMenu">
+              <button mat-menu-item title="View" (click)="surveyMoreInfo(element)">
+                <mat-icon color="primary">description</mat-icon>
+                View
+              </button>
+              <button mat-menu-item title="Delete Survey" (click)="removeSurvey(element)">
+                <mat-icon color="warn">delete</mat-icon>
+                Remove
+              </button>
+              <button mat-menu-item title="Edit Survey" (click)="editSurvey(element)">
+                <mat-icon color="primary">Edit</mat-icon>
+                Edit
+              </button>
+            </mat-menu>
+
+            <button mat-icon-button title="Action" color="primary" [matMenuTriggerFor]="appMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <mat-paginator [length]="pageLength" [pageSizeOptions]="[50, 100, 200]" class="mat-paginator-sticky"
+        [pageSize]="50">
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

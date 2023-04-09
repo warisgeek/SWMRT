@@ -1,0 +1,44 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="form"  (ngSubmit)="onSubmit()">
+      <h2>Log In</h2>
+      <mat-error *ngIf="loginInvalid">
+        The username and password were not recognised
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="username" required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput type="password" placeholder="Password" formControlName="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <div fxLayout="row" fxShow="true"  fxLayoutAlign="center center" fxLayoutGap="20px">
+        <button mat-raised-button fxFlex.gt-sm="100%" color="primary">Login</button>
+        <button mat-raised-button fxFlex.gt-sm="100%" type="button" (click)="onReset()" color="warn">Reset</button>
+      </div>
+      <!-- <div fxLayout="column" fxShow="true" style="margin-top: 20px;" fxLayoutGap="20px" fxLayoutAlign="center center" >
+        <button mat-raised-button fxFlexFill  type="button" (click)="onSignInWithAzureAD()" fxFlex.gt-sm="100%" color="primary"> 
+          <i class="fa fa-windows" aria-hidden="true"></i>
+          Login with Microsoft
+        </button>
+        <button mat-raised-button fxFlexFill  type="button" (click)="onSignInWithGoogle()" fxFlex.gt-sm="100%" color="warn">
+          <i class="fa fa-google" aria-hidden="true"></i>
+          Login with Google
+        </button>
+        <button mat-raised-button fxFlexFill  type="button" style="background-color: #7988df;color:white;" (click)="onSignInWithTwitter()" fxFlex.gt-sm="100%" color="basic">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+          Login with Twitter
+        </button>
+        <button mat-raised-button fxFlexFill  type="button" style="background-color: #62688b;color:white;" (click)="onSignInWithFaceBook()" fxFlex.gt-sm="100%" color="basic">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+          Login with Facebook
+        </button>
+      </div> -->
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,71 @@
+<div fxLayout="column">
+    <div fxLayout="row">
+        <p class="bold-weight" fxFlex="90">Detailed Information about {{data.name}} </p>
+        <button mat-button (click)="close()" fxFlex="10">
+            <mat-icon>clear</mat-icon>
+        </button>
+    </div>
+    <div style="height: 450px;">
+    <div fxLayout="row">
+        <mat-list class="list-width">
+            <div mat-subheader>Personal Information</div>
+            <div fxLayout="row">
+                <div fxFlex="50"><strong>Name: </strong>{{data.name}}</div>
+                <div fxFlex="50"><strong>Email: </strong>{{data.email}}</div>
+            </div>
+            <div fxLayout="row" class="margin-childn">
+                <div fxFlex="50"><strong>Contact No: </strong>{{data.contactno}}</div>
+                <div fxFlex="50"><strong>Stay connected on whatsapp?: </strong>{{data.stayconnectedwhatsapp}}</div>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </div>
+    <div fxLayout="row">
+        <mat-list class="list-width">
+            <div mat-subheader>Address</div>
+            <div fxLayout="row">
+                <div fxFlex="33"><strong>Door No: </strong>{{data.houseno}}</div>
+                <div fxFlex="33"><strong>Ward No: </strong>{{data.wardnumber}}</div>
+                <div fxFlex="33"><strong>Ward Name: </strong>{{data.wardname}}</div>
+            </div>
+            <div fxLayout="row" class="margin-childn">
+                <div fxFlex="100"><strong>Full Address: </strong>{{data.formatted_address}}</div>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-list>
+    </div>
+    <div fxLayout="row">
+        <mat-list class="list-width">
+            <div mat-subheader>Q&A</div>
+            <div fxLayout="column">
+                <div fxFlex="100"><strong>Do You Compost?: </strong></div>
+                <div fxFlex="100">{{data.doyoucompost}}</div>
+            </div>
+            <div fxLayout="column" class="margin-childn">
+                <div fxFlex="100"><strong>What do You do with the Compost?: </strong></div>
+                <div fxFlex="100">{{data.doyoudowithyourcompost}}</div>
+            </div>
+            <div fxLayout="column" class="margin-childn">
+                <div fxFlex="100"><strong>Do you exclusively compost leaves & flowers?: </strong></div>
+                <div fxFlex="100">{{data.doyouexclusivelycompostleavesflowers}}</div>
+            </div>
+            <div fxLayout="column" class="margin-childn">
+                <div fxFlex="100"><strong>Do you have excesive compost?: </strong></div>
+                <div fxFlex="100">{{data.doyouhaveexcesscompost}}</div>
+            </div>
+            <div fxLayout="column" class="margin-childn">
+                <div fxFlex="100"><strong>How long you have been composting?: </strong></div>
+                <div fxFlex="100">{{data.howlongcomposting}}</div>
+            </div>
+            <div fxLayout="column" class="margin-childn">
+                <div fxFlex="100"><strong>Type of Home?: </strong></div>
+                <div fxFlex="100">{{data.ifathomeans}}</div>
+            </div>
+            <div fxLayout="column" class="margin-childn">
+                <div fxFlex="100"><strong>Type of Composting?: </strong></div>
+                <div fxFlex="100">{{data.leavesflowerscompostertype}}</div>
+            </div>
+        </mat-list>
+    </div>
+</div>
+</div>

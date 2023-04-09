@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Green Spot Mapping</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .poi-info-window .full-width {
+            width: 180px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script>
+        var isMapPage=true;
+    </script>
+    <script src="map.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <!-- <script defer src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script> -->
+    <script defer src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+    <!-- <script defer src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script> -->
+    <script defer src="./init-firebase.js"></script>
+
+    <!-- Get Map Key from https://console.developers.google.com/apis -->
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq57jVgCrxAptQWbt0iHl4wySp305VKyw&callback=initMap">
+        </script>
+</body>
+
+</html>

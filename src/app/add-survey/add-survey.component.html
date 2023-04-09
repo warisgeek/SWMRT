@@ -1,0 +1,535 @@
+<div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="80">
+        <mat-card>
+            <mat-card-header color="primary">
+                <mat-card-title>
+                    {{title}}
+                </mat-card-title>
+                <mat-card-subtitle>
+                    GREEN COMPOSTING SURVEY INFORMATION
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div fxLayout="row wrap" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="59">
+                            <mat-label>Name</mat-label>
+                            <input matInput type="text" formControlName="name" required>
+                            <mat-error *ngIf="f.name.errors?.required">
+                                Please enter name
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="40">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" formControlName="email" required>
+                            <mat-error *ngIf="f.email.errors?.required">
+                                Please enter email
+                            </mat-error>
+                            <mat-error *ngIf="f.email.errors?.email">
+                                Please enter valid email
+                            </mat-error>
+                        </mat-form-field>
+
+
+                    </div>
+                    <div fxLayout="row wrap" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="40">
+                            <mat-label>House No</mat-label>
+                            <input matInput type="text" formControlName="houseno">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="59">
+                            <mat-label>Apartment Name</mat-label>
+                            <input matInput type="text" formControlName="apartment">
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="70">
+                            <mat-label>Street (main/block/cross/etc.)</mat-label>
+                            <input matInput type="text" formControlName="street">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="29">
+                            <mat-label>Area</mat-label>
+                            <input matInput type="text" formControlName="area" required>
+                            <mat-error *ngIf="f.area.errors?.required">
+                                Please enter area
+                            </mat-error>
+                        </mat-form-field>
+
+                    </div>
+
+
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="50">
+                            <mat-label>City</mat-label>
+                            <input matInput type="text" formControlName="city">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50">
+                            <mat-label>Pin Code</mat-label>
+                            <input matInput required type="number" formControlName="pincode">
+                            <mat-error *ngIf="f.pincode.errors?.required">
+                                Please enter Pin code
+                            </mat-error>
+                        </mat-form-field>
+
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="50">
+                            <mat-label>State</mat-label>
+                            <input matInput type="text" formControlName="state">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50">
+                            <mat-label>Country</mat-label>
+                            <input matInput type="text" formControlName="country">
+                        </mat-form-field>
+
+                    </div>
+
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="30">
+                            <mat-label>Ward Number</mat-label>
+                            <input matInput type="text" formControlName="wardnumber">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="70">
+                            <mat-label>Ward Name</mat-label>
+                            <input matInput type="text" formControlName="wardname">
+                        </mat-form-field>
+
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="30">
+                            <mat-label>Constituency Number</mat-label>
+                            <input matInput type="text" formControlName="constituencynumber">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="70">
+                            <mat-label>Constituency Name</mat-label>
+                            <input matInput type="text" formControlName="constituencyname">
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="50">
+                            <mat-label>Latitude</mat-label>
+                            <input matInput type="text" formControlName="lat">
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50">
+                            <mat-label>Longitude</mat-label>
+                            <input matInput type="text" formControlName="lang">
+                        </mat-form-field>
+
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="10px">
+                        <mat-form-field fxFlex="50">
+                            <mat-label>Source</mat-label>
+                            <mat-select required formControlName="source">
+                                <mat-option value="Primary">
+                                    Primary
+                                </mat-option>
+                                <mat-option value="Secondary">
+                                    Secondary
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="50">
+                            <mat-label>User Type</mat-label>
+                            <mat-select required formControlName="customertype">
+                                <mat-option value="Home">
+                                    Home
+                                </mat-option>
+                                <mat-option value="Apartment">
+                                    Apartment
+                                </mat-option>
+                                <mat-option value="Villa">
+                                    Villa
+                                </mat-option>
+                                <mat-option value="Layout">
+                                    Layout
+                                </mat-option>
+                                <mat-option value="Office">
+                                    Office
+                                </mat-option>
+                                <mat-option value="Resort">
+                                    Resort
+                                </mat-option>
+                                <mat-option value="Restaurant">
+                                    Restaurant
+                                </mat-option>
+                                <mat-option value="PG">
+                                    PG
+                                </mat-option>
+                                <mat-option value="Commercial Complex">
+                                    Commercial Complex
+                                </mat-option>
+                                <mat-option value="Organization">
+                                    Organization
+                                </mat-option>
+                                <mat-option value="Institution">
+                                    Institution
+                                </mat-option>
+                                <mat-option value="Temple">
+                                    Temple
+                                </mat-option>
+                                <mat-option value="School">
+                                    School
+                                </mat-option>
+                                <mat-option value="Office">
+                                    Office
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </div>
+
+                    <!-- Do you Compost Start -->
+
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content>
+                                    <label id="radio-group-label">Do you Compost?</label>
+                                    <mat-radio-group formControlName="doyoucompost" aria-labelledby="radio-group-label"
+                                        fxLayout="column">
+                                        <mat-radio-button class="example-radio-button" value="Yes">
+                                            Yes
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="No">
+                                            No
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="Sometimes">
+                                            Sometimes
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+                    <div fxLayout="row" *ngIf="f.doyoucompost.value=='No'" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content>
+                                    <label id="radio-group-label">If no, please choose the reason(s) from below</label>
+
+                                    <mat-radio-group aria-labelledby="radio-group-label" fxLayout="column">
+                                        <mat-checkbox [disabled]="isReadOnly"
+                                            (change)="onDoYouCompostCheckboxChange(doyoucompostIfNo[i],$event)"
+                                            class="example-radio-button"
+                                            *ngFor="let item of doyoucompostAns.controls; let i=index;"
+                                            [formControl]="item" value="item.value">{{doyoucompostIfNo[i].text}}
+
+                                            <mat-form-field *ngIf="doyoucompostIfNo[i].text=='Other:'">
+                                                <input matInput>
+                                            </mat-form-field>
+                                        </mat-checkbox>
+
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+                    <div fxLayout="row" *ngIf="f.doyoucompost.value=='Yes'" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content>
+                                    <label id="radio-group-label">If yes, where do you compost?</label>
+                                    <mat-radio-group aria-labelledby="radio-group-label" fxLayout="column">
+                                        <mat-checkbox
+                                            (change)="onDoYouCompostCheckboxChange(doyoucompostIfYes[i],$event)"
+                                            class="example-radio-button"
+                                            *ngFor="let item of doyoucompostAns.controls; let i=index;"
+                                            [formControl]="item" value="item.value">{{doyoucompostIfYes[i].text}}
+                                        </mat-checkbox>
+
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">If apartment community / lane, please enter the
+                                            number
+                                            of household units</label>
+                                    </div>
+                                    <mat-form-field fxFlex="100">
+                                        <input matInput placeholder="Your answer" type="text"
+                                            formControlName="apartmentcommunitylanehouseholdunit">
+                                    </mat-form-field>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+                    <!-- Do you Compost END -->
+
+
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">If at home, please choose from below</label>
+                                    </div>
+                                    <mat-radio-group formControlName="ifathomeans" aria-labelledby="radio-group-label"
+                                        fxLayout="column">
+                                        <mat-radio-button class="example-radio-button" value="Independent house">
+                                            Independent house
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="Apartment with balcony">
+                                            Apartment with balcony
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button"
+                                            value="Apartment without balcony">
+                                            Apartment without balcony
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">For how long have you been composting? </label>
+                                    </div>
+                                    <mat-radio-group formControlName="howlongcomposting"
+                                        aria-labelledby="radio-group-label" fxLayout="column">
+                                        <mat-radio-button class="example-radio-button" value="&lt; 1 yr">
+                                            &lt; 1 yr
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="1 to 5 yrs">
+                                            1 to 5 yrs
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="5 - 10 yrs">
+                                            5 - 10 yrs
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="&gt; 10 yrs">
+                                            &gt; 10 yrs
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">What composter do you use? </label>
+                                    </div>
+                                    <mat-form-field fxFlex="100">
+                                        <input matInput placeholder="Your answer" type="text"
+                                            formControlName="whatcomposterdoyouuse">
+                                    </mat-form-field>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+
+
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">What do you do with your compost? </label>
+                                    </div>
+                                    <mat-radio-group formControlName="doyoudowithyourcompost"
+                                        aria-labelledby="radio-group-label" fxLayout="column">
+                                        <mat-radio-button class="example-radio-button" value="Use in my kitchen garden">
+                                            Use in my kitchen garden
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button"
+                                            value="Give to a nursery/local park">
+                                            Give to a nursery/local park
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="Gift to friends">
+                                            Gift to friends
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="Other:">
+                                            Other:
+                                            <mat-form-field *ngIf="f.doyoudowithyourcompost.value === 'Other:'">
+                                                <input matInput type="text" autofocus>
+                                            </mat-form-field>
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">Do you have excess compost?
+                                        </label>
+                                    </div>
+                                    <mat-radio-group formControlName="doyouhaveexcesscompost"
+                                        aria-labelledby="radio-group-label" fxLayout="column">
+                                        <mat-radio-button class="example-radio-button" value="Yes">
+                                            Yes
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="No">
+                                            No
+                                        </mat-radio-button>
+
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+                    <div fxLayout="row" *ngIf="f.doyouhaveexcesscompost.value === 'Yes'" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">If yes, are you willing to sign up for
+                                            Swachagraha's
+                                            'Farmers Connect' initiative?
+                                        </label>
+                                    </div>
+                                    <mat-radio-group formControlName="willingsignupswachagraha"
+                                        aria-labelledby="radio-group-label" fxLayout="column">
+                                        <mat-radio-button class="example-radio-button" value="Yes">
+                                            Yes
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="No">
+                                            No
+                                        </mat-radio-button>
+
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+
+
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">
+                                            Do you exclusively compost leaves/flowers from your home/neighborhood at
+                                            your
+                                            place?
+                                        </label>
+                                    </div>
+                                    <mat-radio-group formControlName="doyouexclusivelycompostleavesflowers"
+                                        aria-labelledby="radio-group-label" fxLayout="column">
+                                        <mat-radio-button class="example-radio-button" value="Yes">
+                                            Yes
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="No">
+                                            No
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="Sometimes">
+                                            Sometimes
+                                        </mat-radio-button>
+
+
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+                    <div fxLayout="row" *ngIf="f.doyouexclusivelycompostleavesflowers.value==='Yes'"
+                        fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">If yes, what composter do you use? </label>
+                                    </div>
+                                    <mat-form-field fxFlex="100">
+                                        <input matInput placeholder="Your answer" type="text"
+                                            formControlName="leavesflowerscompostertype">
+                                    </mat-form-field>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+
+
+                    <div fxLayout="row" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">
+                                            Do you wish to stay connected on whatsapp?
+
+                                        </label>
+                                    </div>
+                                    <mat-radio-group formControlName="stayconnectedwhatsapp"
+                                        aria-labelledby="radio-group-label" fxLayout="column">
+                                        <mat-radio-button class="example-radio-button" value="Yes">
+                                            Yes
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="No">
+                                            No
+                                        </mat-radio-button>
+                                        <mat-radio-button class="example-radio-button" value="Sometimes">
+                                            Sometimes
+                                        </mat-radio-button>
+
+
+                                    </mat-radio-group>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+                    <div fxLayout="row" *ngIf="f.stayconnectedwhatsapp.value=='Yes'" fxLayoutAlign="center">
+                        <div fxFlex="100">
+                            <mat-card style="margin-top: 0px !important;">
+                                <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                                    <div fxFlex="100">
+                                        <label id="radio-group-label">If yes, please give your phone number below
+                                        </label>
+                                    </div>
+                                    <mat-form-field fxFlex="100">
+                                        <input matInput formControlName="contactno" type="text"
+                                            placeholder="Your answer">
+                                    </mat-form-field>
+                                </mat-card-content>
+                            </mat-card>
+
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxShow="true"  fxLayoutAlign="center center" fxLayoutGap="20px">
+
+                        <button mat-raised-button fxFlex.gt-sm="100%"  color="primary">Submit</button>
+                        <button mat-raised-button fxFlex.gt-sm="100%"  type="button" (click)="onReset()"
+                            color="warn">Reset</button>
+                        <button mat-raised-button fxFlex="10" *ngIf="showPrevNext" title="Go to previous survey" [disabled]="!isPrev" (click)="previous()" color="primary" type="button">Previous</button>
+                        <button mat-raised-button fxFlex="10" *ngIf="showPrevNext" title="Go to next survey" [disabled]="!isNext" (click)="next()"  type="button" color="primary">Next</button>
+                    </div>
+
+                </form>
+
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+
+</div>

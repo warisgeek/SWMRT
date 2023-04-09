@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Google Map Marker</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet'
+        type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body,
+        div,
+        form,
+        input,
+        select,
+        p {
+            padding: 0;
+            margin: 0;
+            outline: none;
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            color: #666;
+        }
+
+        h1 {
+            margin: 0;
+            font-weight: 400;
+        }
+
+        h3 {
+            margin: 12px 0;
+            color: #8ebf42;
+        }
+
+        .main-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        form {
+            width: 100%;
+            padding: 20px;
+        }
+
+        fieldset {
+            border: none;
+            border-top: 1px solid #8ebf42;
+        }
+
+        .account-details,
+        .personal-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .account-details>div,
+        .personal-details>div>div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .account-details>div,
+        .personal-details>div,
+        input,
+        label {
+            width: 100%;
+        }
+
+        label {
+            padding: 0 5px;
+            text-align: right;
+            vertical-align: middle;
+        }
+
+        input {
+            padding: 5px;
+            vertical-align: middle;
+        }
+
+        .checkbox {
+            margin-bottom: 10px;
+        }
+
+        select,
+        .children,
+        .gender,
+        .bdate-block {
+            width: calc(100% + 26px);
+            padding: 5px 0;
+        }
+
+        select {
+            background: transparent;
+        }
+
+        .gender input {
+            width: auto;
+        }
+
+        .gender label {
+            padding: 0 5px 0 0;
+        }
+
+        .bdate-block {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .birthdate select.day {
+            width: 35px;
+        }
+
+        .birthdate select.mounth {
+            width: calc(100% - 94px);
+        }
+
+        .birthdate input {
+            width: 38px;
+            vertical-align: unset;
+        }
+
+        .checkbox input,
+        .children input {
+            width: auto;
+            margin: -2px 10px 0 0;
+        }
+
+        .checkbox a {
+            color: #8ebf42;
+        }
+
+        .checkbox a:hover {
+            color: #82b534;
+        }
+
+        button {
+            width: 40%;
+            padding: 10px 0;
+            margin: 10px auto;
+            border-radius: 5px;
+            border: none;
+            background: #8ebf42;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #82b534;
+        }
+
+        @media (min-width: 568px) {
+
+            .account-details>div,
+            .personal-details>div {
+                width: 100%;
+            }
+
+            label {
+                width: 20%;
+            }
+
+            input {
+                width: 60%;
+            }
+
+            select,
+            .children,
+            .gender,
+            .bdate-block {
+                width: calc(60% + 16px);
+            }
+        }
+
+        .container {
+            display: flex;
+            /* establish flex container */
+            flex-direction: column;
+            /* make main axis vertical */
+            justify-content: center;
+            /* center items vertically, in this case */
+            align-items: center;
+
+        }
+
+        .box {
+            margin: 5px;
+            text-align: center;
+            width: 300px;
+            /* will center text in <p>, which is not a flex item */
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            display: -moz-groupbox;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            word-break: break-all;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        tr {
+            width: 100%;
+            display: inline-table;
+            table-layout: fixed;
+        }
+
+        tbody {
+            overflow-y: scroll;
+            width: 100%;
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-block">
+        <form id="myForm" onsubmit="addMarker(event)">
+            <h1>Add New Google Marker</h1>
+            <div style="width: 40%;float:left;">
+
+                <fieldset>
+                    <legend>
+                        <h3>Address</h3>
+                    </legend>
+                    <div class="personal-details container">
+                        <div class="box">
+                            <div><label>Name*</label><input type="text" name="name" required></div>
+                            <div><label>Email*</label><input type="text" name="email" required></div>
+                            <div><label>House No</label><input type="text" name="house"></div>
+                            <div><label>Apartment</label><input type="text" name="apartment"></div>
+                            <div><label>Street</label><input type="text" name="street"></div>
+                            <div><label>Area</label><input type="text" name="area"></div>
+                            <div><label>City*</label><input type="text" name="city" required></div>
+                            <div><label>Pin Code*</label><input type="text" name="pincode" required></div>
+                            <div>
+                                <label>Country*</label>
+                                <select required name="country">
+                                    <option value="IN">India</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </fieldset>
+                <div class="personal-details container">
+                    <div style="text-align: center;">
+                        <button type="submit">Submit</button>
+                        <button type="reset">Reset</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <div style="width: 60%;float:left;">
+                <fieldset>
+                    <legend>
+                        <h3>Address List</h3>
+                    </legend>
+                    <div class="personal-details container">
+                        <div class="box" style="width: 100% !important;">
+                            <table>
+                                <thead style="width: 98%;
+                                display: block;">
+
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>House No</th>
+                                        <th>Apartment</th>
+                                        <th>Street</th>
+                                        <th>Area</th>
+                                        <th>City</th>
+                                        <th>Pin Code</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="height: 400px;" id="addressList">
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <label>set Map Zoom</label>
+                                <input type="range" min="1" onchange="sliderChange()" max="100" value="12" id="slider">
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+        </form>
+
+       
+
+    </div>
+    <div class="main-block">
+        <form>
+            <div style="width: 100%;">
+
+
+                <fieldset>
+                    <legend>
+                        <h3>Bulk Upload</h3>
+                    </legend>
+                    <div class="personal-details container">
+                        <div class="box" style="width: 100% !important;">
+                            <input id="upload" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"  name="files[]">
+                        </div>
+
+                    </div>
+
+                </fieldset>
+            </div>
+        </form>
+    </div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+<script src="excelupload.js"></script>
+
+<script>
+    var isMapPage = false;
+    document.getElementById('upload').addEventListener('change', handleFileSelect, false);
+
+</script>
+<script defer src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+<!-- <script defer src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script> -->
+<script defer src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+<!-- <script defer src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script> -->
+<script defer src="./init-firebase.js"></script>
+<script defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq57jVgCrxAptQWbt0iHl4wySp305VKyw&callback=initGeoCoder">
+</script>
+
+</html>
